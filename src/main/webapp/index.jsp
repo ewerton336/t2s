@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Index</title>
+<%@include file="WEB-INF/jspf/bootstrap.jspf" %>
+<title>Ewerton Guimarães</title>
 </head>
 <body>
 <h1> Hello World!</h1>

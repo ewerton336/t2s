@@ -12,6 +12,6 @@
 <h1> Hello World!</h1>
 
 
-<a href="teste.jsp"> Teste de conexão</a>
+<h2><a href="teste.jsp"> Teste de conexão</a></h2>
 </body>
 </html>

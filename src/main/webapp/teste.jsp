@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@include file="WEB-INF/jspf/bootstrap.jspf" %>
+<%@include file="WEB-INF/jspf/footer.jspf" %>
 <title>Teste banco de dados - T2s</title>
 </head>
 <body>
@@ -20,9 +21,11 @@
 
 
  
-		<% String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres";
+		 <% 
+		 String jdbcURL = "jdbc:postgresql://localhost:5432/postgres"; 
+		 /*String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; */
 		String username = "postgres";
-		String password = "123456";
+		String password = "123456"; 
 		
 		try {
 			Connection connection = DriverManager.getConnection(jdbcURL, username, password);

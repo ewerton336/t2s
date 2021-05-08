@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@include file="WEB-INF/jspf/bootstrap.jspf" %>
 <%@include file="WEB-INF/jspf/footer.jspf" %>
-<title>Teste banco de dados - T2s</title>
+<title>Cadastro de conteiner - T2s</title>
 </head>
 <body>
 
@@ -18,13 +18,20 @@
 <%@ page import="java.sql.SQLException" %>
 <%@page import="java.sql.Statement" %>
 <%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet;" %>
 
 <div class="container-fluid">
-<% String cliente = request.getParameter("cliente");
+
+<% 
+/* STRINGS PARA CAPTURA DE INPUT   */
+String cliente = request.getParameter("cliente");
 String conteiner = request.getParameter("num_conteiner");
 String tipo = request.getParameter("tipo");
 String status = request.getParameter("status");
 String categoria = request.getParameter("categoria");
+
+/* STRINGS PARA GERAÇÃO TA TABELA   */
+String nomeTable, tipoTable, conteinerTable, statusTable, categoriaTable;
 %>
 
 
@@ -49,21 +56,21 @@ String categoria = request.getParameter("categoria");
 		 
 		<h4> Tipo de conteiner: </h4>
  <select name="tipo" class="custom-select">
-    <option selected>Selecione uma opção</option>
+    <option selected></option>
     <option value="20">20</option>
     <option value="40">40</option>
   </select>
   
   	<h4> Status: </h4>
    <select name="status" class="custom-select">
-    <option selected>Selecione uma opção</option>
+    <option value ="" selected></option>
     <option value="cheio">Cheio</option>
     <option value="vazio">Vazio</option>
   </select>
   
   	<h4> Categoria: </h4>
    <select name="categoria" class="custom-select">
-    <option selected>Selecione uma opção</option>
+    <option value="" selected></option>
     <option value="importacao">Importação</option>
     <option value="exportacao">Exportacao</option>
   </select>
@@ -118,6 +125,11 @@ String categoria = request.getParameter("categoria");
 				}		
 		 
 				%>
+				
+				
+				
+				
+			
 				
 		
 		

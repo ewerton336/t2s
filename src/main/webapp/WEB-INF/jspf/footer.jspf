@@ -6,7 +6,8 @@
     <ul class="nav navbar-nav">
       <li><a href="index.jsp">Inicio</a></li>
      <li><a href="teste.jsp">Teste</a></li>
-        <li><a href="conteiner.jsp">Cadastrar Contêiner</a></li>
+         <li><a href="cadastro-conteiner.jsp">Cadastrar conteiner</a></li>
+          <li><a href="listar-conteiners.jsp">Listar Contêiners</a></li>
     
       
       

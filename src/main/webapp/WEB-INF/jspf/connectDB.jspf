@@ -1,0 +1,32 @@
+<%@ page import="java.sql.Connection"%>
+	<%@ page import="java.sql.DriverManager"%>
+	<%@ page import="java.sql.SQLException"%>
+	<%@page import="java.sql.Statement"%>
+	<%@page import="java.sql.PreparedStatement"%>
+	<%@page import="java.sql.ResultSet"%>
+<%
+		String jdbcURL = "jdbc:postgresql://localhost:5432/postgres";
+		/*String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; */
+		String username = "postgres";
+		String password = "123456";
+		%>
+
+		<div class="alert alert-success" role="alert">
+			<%
+
+			try {
+				Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+				System.out.println("Conectado com sucesso!");
+				
+				connection.close();
+				
+			} catch (SQLException e) {
+				System.out.println("Erro de conexao ao banco de dados PostgreSQL");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
+				%>
+			
+	
+		</div>

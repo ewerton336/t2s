@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@include file="WEB-INF/jspf/bootstrap.jspf" %>
 <%@include file="WEB-INF/jspf/footer.jspf" %>
-<title>Teste banco de dados - T2s</title>
+<title>Listagem de Contêineres - T2s</title>
 </head>
 <body>
 
@@ -28,9 +28,7 @@ String status = request.getParameter("status");
 String categoria = request.getParameter("categoria");
 %>
 
-
- 
-		 <% 
+	 <% 
 		 String jdbcURL = "jdbc:postgresql://localhost:5432/postgres"; 
 		 /*String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; */
 		String username = "postgres";
@@ -41,47 +39,10 @@ String categoria = request.getParameter("categoria");
 			Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 			out.println("<h4>Conexão com o Banco de Dados estabelecida.</h4>"); %> 
 			</div>
-			
-			
-			
-				<form method="get">
-		 <h4>Cliente:</h4> <input type="text" class="form-control" id="nom" name="cliente" required> <br>
-		 <h4> Número do contêiner: </h4> <input type="text" class="form-control" id="email" name="num_conteiner" required> <br>
-		 
-		<h4> Tipo de conteiner: </h4>
- <select name="tipo" class="custom-select">
-    <option selected>Selecione uma opção</option>
-    <option value="20">20</option>
-    <option value="40">40</option>
-  </select>
-  
-  	<h4> Status: </h4>
-   <select name="status" class="custom-select">
-    <option selected>Selecione uma opção</option>
-    <option value="cheio">Cheio</option>
-    <option value="vazio">Vazio</option>
-  </select>
-  
-  	<h4> Categoria: </h4>
-   <select name="categoria" class="custom-select">
-    <option selected>Selecione uma opção</option>
-    <option value="importacao">Importação</option>
-    <option value="exportacao">Exportacao</option>
-  </select>
-  
-  
-  
-  
-  
-		 
-		<br> <br>	
 
-	
-		  <button type="submit" class="btn btn-primary">Salvar</button> <br> <br> <br> <br>
-</form>
-	
-		
-			<h1> Lista de Contêiners</h1>
+
+
+	<h1> Lista de Contêineres</h1>
 			 <% 
 			
 			/* SE O VALOR DE NOME TENHA ALGUMA INFORMAÇÃO, ELE IRÁ GRAVAR OS DADOS NO BD. CASO SEJA NULO, NÃO FARÁ NADA */
@@ -168,35 +129,9 @@ String categoria = request.getParameter("categoria");
 					connection.close();%>
 					
 			 </table>
-						
-				
-				
-				
-			
-				
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			</div>
+			 
+			 
+			 </div>
 
-			
-			
-			
-			
-		
-		
-		
-	
-		
-		
 </body>
 </html>

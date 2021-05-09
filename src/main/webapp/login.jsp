@@ -19,27 +19,33 @@
 <%@page import="java.sql.ResultSet"%>
 
 <%
-String email = request.getParameter("email");
-String senha = request.getParameter("senha");
+String emailinput = request.getParameter("email");
+String senhainput = request.getParameter("senha");
 %>
 
-<% /* conexão com o banco de dados */
-		 String jdbcURL = "jdbc:postgresql://localhost:5432/postgres"; 
-		 /*String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; */
-		String username = "postgres";
-		String password = "123456"; %>
+<%
+/* conexão com o banco de dados */
+String jdbcURL = "jdbc:postgresql://localhost:5432/postgres";
+/*String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; */
+String username = "postgres";
+String password = "123456";
+%>
 
 <div class="alert alert-success" role="alert">
-	<% try {
-			Connection connection = DriverManager.getConnection(jdbcURL, username, password);
-			out.println("Conectado com sucesso ao banco de dados."); %>
+	<%
+	try {
+		Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+		out.println("Conectado com sucesso ao banco de dados.");
+
+		connection.close();
+	%>
 </div>
 
 <body>
 	<div class="container-fluid">
 		<form method="post">
 			<div class="form-group">
-				
+
 				<label for="email">Email:</label> <input type="email"
 					class="form-control" id="email" name="email" required>
 			</div>
@@ -49,44 +55,74 @@ String senha = request.getParameter("senha");
 			</div>
 
 			<button type="submit" class="btn btn-primary">Login</button>
+			<a href="cadastro-usuario.jsp" class="btn btn-primary">Criar
+				conta</a>
 		</form>
-	</div>
 
 
+		<br>
 
-	<%
-	/* AUTENTICACAO COM O BANCO D EDADOS */
-	if (email != null) {
-		String sql = "SELECT * FROM tb_usuario";
-		
-		
-		
-		Statement statement =connection.createStatement();
-		
-		ResultSet result = statement.executeQuery(sql);
-		
-		
-		
+		<%
+		} catch (SQLException e) {
+		out.println("<h2>Erro de conexao ao banco de dados PostgreSQL! Detalhes do erro:</h2> <br>");
+
+		e.printStackTrace(new java.io.PrintWriter(out));
+		}
 		%>
 
-	<br>
-	
-	
 
-	<%
-			connection.close();} 
-				} catch (SQLException e) {
-					out.println("<h2>Erro de conexao ao banco de dados PostgreSQL! Detalhes do erro:</h2> <br>");
-					
-					e.printStackTrace(new java.io.PrintWriter(out));
-				}		
+
+
+		<%
+		/* AUTENTICACAO COM O BANCO D EDADOS */
+
+		try {
+
+			Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+
+			String sql = "Select email_usuario,senha_usuario  from tb_usuario WHERE email_usuario='" + emailinput + "'";
+
+			Statement statement = connection.createStatement();
+			;
+
+			ResultSet result = statement.executeQuery(sql);
+		%>
+		<%
+		while (result.next()) {
+			String db_email_usuario = result.getString("email_usuario");
+			String db_senha_usuario = result.getString("senha_usuario");
+
+			if (senhainput.equals(db_senha_usuario)) {
+		%>
+		<div class="alert alert-success" role="alert">
+			<%
+			out.println("Logado com sucesso!");
+			}
+
+			else {
 			%>
+			<div class="alert alert-danger">
+				<%
+				out.println("usuário ou senha incorreta");
+				}
+				%>
+			</div>
+			<%
+			connection.close();
+
+			}
+			} catch (SQLException e) {
+			out.println("Erro de conexao ao banco de dados PostgreSQL");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+			%>
+		</div>
 
 
 
 
 
-
-
+	</div>
 </body>
 </html>

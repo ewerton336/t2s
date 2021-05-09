@@ -11,12 +11,10 @@
 <title>Teste banco de dados - T2s</title>
 </head>
 <body>
-
-
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.SQLException" %>
-
+	<div class="container-fluid">
 
 
 
@@ -40,5 +38,7 @@
 		}		
  
 		%>
+		
+		</div>
 </body>
 </html>

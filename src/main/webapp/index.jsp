@@ -10,9 +10,10 @@
 <title>T2S - Index</title>
 </head>
 <body>
+	<div class="container-fluid">
 <h1> Hello World!</h1>
-
-
 <h2><a href="teste.jsp"> Teste de conexão</a></h2>
+
+</div>
 </body>
 </html>

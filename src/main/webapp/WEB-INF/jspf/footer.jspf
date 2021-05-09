@@ -8,13 +8,12 @@
      <li><a href="teste.jsp">Teste</a></li>
          <li><a href="cadastro-conteiner.jsp">Cadastrar contêiner</a></li>
           <li><a href="listar-conteineres.jsp">Listar contêineres</a></li>
-    
-      
-      
     </ul>
+    
     <ul class="nav navbar-nav navbar-right">
       <li><a href="cadastro-usuario.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+       <li><a href="sobre.jsp"><span class="glyphicon glyphicon-user"></span> Sobre</a></li>
     </ul>
   </div>
 </nav>

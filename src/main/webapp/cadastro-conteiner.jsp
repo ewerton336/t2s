@@ -19,7 +19,7 @@
 	<%@page import="java.sql.Statement"%>
 	<%@page import="java.sql.PreparedStatement"%>
 	<%@page import="java.sql.ResultSet"%>
-
+	<%@include file="WEB-INF/jspf/session.jspf"%>
 
 	<%
 	String cliente = request.getParameter("cliente");

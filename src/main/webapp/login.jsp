@@ -11,6 +11,7 @@
 
 <%@include file="WEB-INF/jspf/bootstrap.jspf"%>
 <%@include file="WEB-INF/jspf/footer.jspf"%>
+<%@include file="WEB-INF/jspf/session.jspf"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.SQLException"%>
@@ -80,7 +81,7 @@ String password = "123456";
 
 			Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 
-			String sql = "Select email_usuario,senha_usuario  from tb_usuario WHERE email_usuario='" + emailinput + "'";
+			String sql = "Select nome_usuario, email_usuario,senha_usuario  from tb_usuario WHERE email_usuario='" + emailinput + "'";
 
 			Statement statement = connection.createStatement();
 			;
@@ -91,22 +92,32 @@ String password = "123456";
 		while (result.next()) {
 			String db_email_usuario = result.getString("email_usuario");
 			String db_senha_usuario = result.getString("senha_usuario");
+			String db_nome_usuario = result.getString("nome_usuario");
 
-			if (senhainput.equals(db_senha_usuario)) {
+			if (senhainput.equals(db_senha_usuario) && emailinput.equals(db_email_usuario)) {
 		%>
 		<div class="alert alert-success" role="alert">
 			<%
+			
+			/*DEFINE O NOME DE USUARIO NA SESSAO E ATUALIZA A PAGINA*/
+			session.setAttribute("session.username", db_nome_usuario);
 			out.println("Logado com sucesso!");
+			 response.sendRedirect("/t2s/src/main/webapp/index.jsp");
+			
 			}
+			 
 
 			else {
 			%>
 			<div class="alert alert-danger">
 				<%
-				out.println("usuário ou senha incorreta");
+				out.println("Usuário ou senha incorretos.");
 				}
+			
+			
 				%>
-			</div>
+				
+				
 			<%
 			connection.close();
 
@@ -118,6 +129,8 @@ String password = "123456";
 			}
 			%>
 		</div>
+			
+			</div>
 
 
 

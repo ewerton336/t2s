@@ -1,3 +1,15 @@
+<% 
+if (session.getAttribute("session.username") == null) {
+%>
+<div class="container-fluid">
+<h4><a href="/t2s/src/main/webapp/login.jsp">Por favor, faça login para visualizar o conteúdo do site</h4></a> </div>
+
+
+
+
+<%
+} else {
+%>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -9,11 +21,20 @@
          <li><a href="cadastro-conteiner.jsp">Cadastrar contêiner</a></li>
           <li><a href="listar-conteineres.jsp">Listar contêineres</a></li>
     </ul>
-    
+     <form>
     <ul class="nav navbar-nav navbar-right">
+   
+    <li><a href="#">Bem vindo, <%=session.getAttribute("session.username")%></a></li>
+
+	<li><input type="submit" class="btn btn-primary" name="session.logout" value="Sair" />   </form>
+
+    
       <li><a href="cadastro-usuario.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
       <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
        <li><a href="sobre.jsp"><span class="glyphicon glyphicon-user"></span> Sobre</a></li>
     </ul>
   </div>
 </nav>
+
+
+<%}%>

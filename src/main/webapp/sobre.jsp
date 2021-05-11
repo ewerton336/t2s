@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@include file="WEB-INF/jspf/bootstrap.jspf" %>
 <%@include file="WEB-INF/jspf/footer.jspf" %>
+<%@include file="WEB-INF/jspf/session.jspf"%>
 
 <title>T2S - Sobre</title>
 </head>
@@ -85,6 +86,16 @@
         <td>Cadastro de usuário</td>
         <td>-Criado tabela no banco de dados com informações dos usuários.
         <br>-Criado página para cadastro de novo usuário.
+        </td>
+ 		</tr>
+ 		
+ 			<tr>
+       <td>1.7</td>
+        <td>09/05/2021</td>
+        <td>Tela de Login</td>
+        <td>-Criado tela de login, com autenticação dos dados digitados comparando com o servidor.
+        <br>-Criado botões de redirecionamento para página de registro , login, etc.
+        <br> Criado página "Sobre" com histórico de releases baseados nos meus commits.
         </td>
  		</tr>
  

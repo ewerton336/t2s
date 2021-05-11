@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@include file="WEB-INF/jspf/bootstrap.jspf" %>
 <%@include file="WEB-INF/jspf/footer.jspf" %>
+<%@include file="WEB-INF/jspf/session.jspf"%>
 
 <title>T2S - Index</title>
 </head>

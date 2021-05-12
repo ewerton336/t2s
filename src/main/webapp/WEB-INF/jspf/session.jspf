@@ -12,7 +12,7 @@ if (request.getParameter("session.login") != null) {
 	}
 } else if (request.getParameter("session.logout") != null) {
 	session.removeAttribute("session.username");
-	response.sendRedirect(request.getRequestURI());
+	response.sendRedirect("./index.jsp");
 }
 %>
 

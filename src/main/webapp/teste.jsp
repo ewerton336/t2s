@@ -15,18 +15,14 @@
 	<%@ page import="java.sql.DriverManager"%>
 	<%@ page import="java.sql.SQLException"%>
 	<%@include file="WEB-INF/jspf/session.jspf"%>
+	<%@include file="WEB-INF/jspf/jdbcURL.jspf"%>
 
 
 
 	<div class="container-fluid">
 
-		<% 
-		 String jdbcURL = "jdbc:postgresql://localhost:5432/postgres"; 
-		 /*String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; */
-		String username = "postgres";
-		String password = "123456"; 
-		
-		try {
+	
+	<%	try {
 			Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 			out.println("<h1>Conectado ao banco de dados com sucesso!</h1>");
 			

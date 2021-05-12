@@ -20,6 +20,7 @@
 	<%@page import="java.sql.PreparedStatement"%>
 	<%@page import="java.sql.ResultSet"%>
 	<%@include file="WEB-INF/jspf/session.jspf"%>
+	<%@include file="WEB-INF/jspf/jdbcURL.jspf"%>
 
 	<%
 	String cliente = request.getParameter("cliente");
@@ -31,20 +32,14 @@
 
 	<div class="container-fluid">
 
-		<%
-		String jdbcURL = "jdbc:postgresql://localhost:5432/postgres";
-		/*String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; */
-		String username = "postgres";
-		String password = "123456";
-		%>
+	
 
-		<div class="alert alert-success" role="alert">
+	
 			<%
 			try {
 				Connection connection = DriverManager.getConnection(jdbcURL, username, password);
-				out.println("<h4>Conexão com o Banco de Dados estabelecida.</h4>");
 			%>
-		</div>
+		
 
 
 
@@ -65,14 +60,14 @@
 
 			<h4>Status:</h4>
 			<select name="status" class="custom-select">
-				<option selected>Selecione uma opção</option>
+				<option selected value = "0">Selecione uma opção</option>
 				<option value="cheio">Cheio</option>
 				<option value="vazio">Vazio</option>
 			</select>
 
 			<h4>Categoria:</h4>
 			<select name="categoria" class="custom-select">
-				<option selected>Selecione uma opção</option>
+				<option selected value = "0">Selecione uma opção</option>
 				<option value="importacao">Importação</option>
 				<option value="exportacao">Exportacao</option>
 			</select> <br> <br>

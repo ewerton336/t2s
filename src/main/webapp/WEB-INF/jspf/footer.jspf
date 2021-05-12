@@ -1,40 +1,109 @@
 <% 
 if (session.getAttribute("session.username") == null) {
 %>
-<div class="container-fluid">
-<h4><a href="/t2s/src/main/webapp/login.jsp">Por favor, faça login para visualizar o conteúdo do site</h4></a> </div>
 
+
+
+
+
+<div class="container-fluid">
+
+<h4><a href="./login.jsp">Por favor, faça login para visualizar todo o conteúdo do site</h4></a>  </div>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">T2S</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="./index.jsp">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./teste.jsp">Teste conexão com DB</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="./login.jsp">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./cadastro-usuario.jsp">Cadastrar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./sobre.jsp">Sobre</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
 
 
 
 <%
 } else {
 %>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">T2S</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.jsp">Inicio</a></li>
-     <li><a href="teste.jsp">Teste</a></li>
-         <li><a href="cadastro-conteiner.jsp">Cadastrar contêiner</a></li>
-          <li><a href="listar-conteineres.jsp">Listar contêineres</a></li>
-    </ul>
-     <form>
-    <ul class="nav navbar-nav navbar-right">
-   
-    <li><a href="#">Bem vindo, <%=session.getAttribute("session.username")%></a></li>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">T2S</a>
 
-	<li><input type="submit" class="btn btn-primary" name="session.logout" value="Sair" />   </form>
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
     
-      <li><a href="cadastro-usuario.jsp"><span class="glyphicon glyphicon-user"></span> Registrar</a></li>
-      <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-       <li><a href="sobre.jsp"><span class="glyphicon glyphicon-user"></span> Sobre</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="./index.jsp">Inicio</a>
+      </li>
+     
+      <li class="nav-item">
+        <a class="nav-link" href="./sobre.jsp">Sobre</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./cadastro-conteiner.jsp">Cadastrar Contêiner</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./listar-conteineres.jsp">Listar Contêineres</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./sobre.jsp">Sobre</a>
+      </li>
+      <form>
+   <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Bem vindo, <%=session.getAttribute("session.username")%>
+      </a>
+       <form>
+      <div class="dropdown-menu">
+        <a class="dropdown-item"> <input type="submit" class="btn btn-primary" name="session.logout" value="Sair" /></a>
+      </li>
+       
+      
+       
+      
+   
+
+	
     </ul>
   </div>
-</nav>
+  </nav>
+
+
+
+
+
+
+
+
+
 
 
 <%}%>

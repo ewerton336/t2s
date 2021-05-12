@@ -14,22 +14,14 @@
 	<div class="container-fluid">
 	
 	<% 
-// CASO NAO TENHA USUARIO LOGADO ESSA PÁGINA É EXIBIDA
-if (session.getAttribute("session.username") == null) {
+if (session.getAttribute("session.username") != null) {
 %>
-<h1> Hello World!</h1>
-<h2><a href="teste.jsp"> Teste de conexão</a></h2>
+
+<h1> Logado com sucesso!</h1>
 
 
 
-
-<!-- CASO HAJA LOGIN ESSA PÁGINA É EXIBIDA -->
-<% } else {%>
-
-<h1> Você está logado!</h1>
-
-
-<%} %>
+<% }%>
 
 </div>
 </body>

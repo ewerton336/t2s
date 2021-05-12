@@ -56,7 +56,7 @@
 				<option selected>Selecione uma opção</option>
 				<option value="20">20</option>
 				<option value="40">40</option>
-			</select>
+			</select> <br>
 
 			<h4>Status:</h4>
 			<select name="status" class="custom-select">

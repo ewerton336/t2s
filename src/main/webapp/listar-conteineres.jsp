@@ -68,7 +68,8 @@
 				ResultSet result = statement.executeQuery(sql);
 
 				while (result.next()) {
-					int idTable = result.getInt("id_conteiner");
+					String idTable = result.getString("id_conteiner");
+
 					String nomeTable = result.getString("nm_cliente");
 					String conteinerTable = result.getString("num_conteiner");
 					String tipoTable = result.getString("tip_conteiner");
@@ -84,31 +85,31 @@
 					<td><%=tipoTable%></td>
 					<td><%=statusTable%></td>
 					<td><%=categoriaTable%></td>
-					<form action="editar-conteiner.jsp" method="get">
-						<td>
+
+					<td><form action="editar-conteiner.jsp" method="get">
 							<button type="submit" value="<%=idTable%>" name="idValue"
 								class="btn btn-info">Editar</button>
-					</form>
-					</td>
-					<form method="post">
-						<td><button type="submit" value="<%=idTable%>"
-								name="botaoDelete" class="btn btn-danger">Deletar</button>
-					</form>
-					</td>
+						</form></td>
 
+
+
+					<td><form method="post">
+							<button type="submit" value="<%=idTable%>" name="botaoDelete"
+								class="btn btn-danger">Deletar</button>
+						</form></td>
 
 				</tr>
 			</tbody>
 
 			<%
-			}
+				}
 			connection.close();
 			%>
 
 
 			<%
-			if (botaoDel != null) { try {
-				
+			if (botaoDel != null) {
+				try {
 
 					connection = DriverManager.getConnection(jdbcURL, username, password);
 
@@ -117,22 +118,20 @@
 					PreparedStatement statement2 = connection.prepareStatement(sql2);
 
 					statement2.executeUpdate();
-					
-					
 			%>
 			<div class="alert alert-success" role="alert">
 
-<p> <a href="./listar-conteineres.jsp">
-				<%
-				out.println("Container removido. Clique aqui para atualizar");
-				%>
-</p></a>
+				<p>
+					<a href="./listar-conteineres.jsp"> <%
+ out.println("Container removido. Clique aqui para atualizar");
+ %>
+				</p>
+				</a>
 
 			</div>
 			<%
 			connection.close();
 			}
-			
 
 			catch (SQLException e) {
 			out.println("Erro de conexao ao banco de dados PostgreSQL");
@@ -140,7 +139,8 @@
 			e.printStackTrace(new java.io.PrintWriter(out));
 			}
 
-			} }
+			}
+			}
 			%>
 		</table>
 	</div>

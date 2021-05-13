@@ -11,11 +11,17 @@
 <title>Teste banco de dados - T2s</title>
 </head>
 <body>
+
 	<%@ page import="java.sql.Connection"%>
 	<%@ page import="java.sql.DriverManager"%>
 	<%@ page import="java.sql.SQLException"%>
+	<%@page import="java.sql.Statement"%>
+	<%@page import="java.sql.PreparedStatement"%>
+	<%@page import="java.sql.ResultSet"%>
 	<%@include file="WEB-INF/jspf/session.jspf"%>
 	<%@include file="WEB-INF/jspf/jdbcURL.jspf"%>
+
+
 
 
 

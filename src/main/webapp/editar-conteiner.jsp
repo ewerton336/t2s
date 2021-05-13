@@ -36,7 +36,7 @@
 	%>
 
 
-	<div class="container-fluid col-sm-4">
+	<div class="container-fluid col-sm-4 mt-2">
 
 
 		<%if (id!= null) { Connection connection = DriverManager.getConnection(jdbcURL, username, password);

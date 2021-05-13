@@ -74,6 +74,12 @@ if (session.getAttribute("session.username") == null) {
         <a class="nav-link" href="./listar-conteineres.jsp">Listar Contêineres</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="./cadastro-movimentacao.jsp">Cadastrar Movimentação</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./listar-movimentacao.jsp">Listar Movimentação</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="./sobre.jsp">Sobre</a>
       </li>
       <form>

@@ -24,7 +24,11 @@
 
 	<div class="container-fluid mt-2">
 		<%
-	
+		String cliente = request.getParameter("cliente");
+		String conteiner = request.getParameter("num_conteiner");
+		String tipo = request.getParameter("tipo");
+		String status = request.getParameter("status");
+		String categoria = request.getParameter("categoria");
 		String botaoDel = request.getParameter("botaoDelete");
 		int botaoDel2;
 		if (botaoDel != null) {
@@ -57,32 +61,53 @@
 				<%
 				Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 
-				String sql = "SELECT * FROM tb_conteiner ORDER BY id_conteiner ASC ";
+				String sql = "SELECT * FROM tb_movimentacao ORDER BY id_movimentacao ASC ";
 
 				Statement statement = connection.createStatement();
 
 				ResultSet result = statement.executeQuery(sql);
 
 				while (result.next()) {
-					String idTable = result.getString("id_conteiner");
-
-					String nomeTable = result.getString("nm_cliente");
-					String conteinerTable = result.getString("num_conteiner");
-					String tipoTable = result.getString("tip_conteiner");
-					String statusTable = result.getString("stt_conteiner");
-					String categoriaTable = result.getString("cat_conteiner");
+					String idTable = result.getString("id_movimentacao");
+					String carga = result.getString("carga_descarga");
+					String gate = result.getString("gatein_gateout");
+					String pos = result.getString("posicionamento");
+					String pilha = result.getString("pilha");
+					String peso = result.getString("gatein_gateout");
+					String scanner = result.getString("scanner");
+					String dt_inicio = result.getString("data_inicio");
+					String hr_inicio = result.getString("hora_inicio");
+					String dt_fim = result.getString("data_fim");
+					String hr_fim = result.getString("hora_fim");
+					String numeroConteiner = result.getString("numero_conteiner");
+					
+					
 				%>
 			
 			<tbody>
 				<tr>
 					<td><%=idTable%></td>
-					<td><%=nomeTable%></td>
-					<td><%=conteinerTable%></td>
-					<td><%=tipoTable%></td>
-					<td><%=statusTable%></td>
-					<td><%=categoriaTable%></td>
+					<td><%=carga%></td>
+					<td><%=gate%></td>
+					<td><%=pos%></td>
+					<td><%=pilha%></td>
+					<td><%=peso%></td>
+					
+					<td><%=dt_inicio%></td>
+					<td><%=hr_inicio%></td>
+					<td><%=hr_inicio%></td>
+					<td><%=dt_fim%></td>
+					<td><%=hr_fim%></td>
+					<td><%=numeroConteiner%></td>
+					
+					
+					
+				
+					
+					
+					
 
-					<td><form action="editar-conteiner.jsp" method="post">
+					<td><form action="editar-movimentacao.jsp" method="get">
 							<button type="submit" value="<%=idTable%>" name="idValue"
 								class="btn btn-info">Editar</button>
 						</form></td>
@@ -109,16 +134,16 @@
 
 					connection = DriverManager.getConnection(jdbcURL, username, password);
 
-					String sql2 = "DELETE FROM tb_conteiner WHERE id_conteiner = " + botaoDel + "";
+					String sql3 = "DELETE FROM tb_conteiner WHERE id_conteiner = " + botaoDel + "";
 
-					PreparedStatement statement2 = connection.prepareStatement(sql2);
+					PreparedStatement statement3 = connection.prepareStatement(sql3);
 
-					statement2.executeUpdate();
+					statement3.executeUpdate();
 			%>
 			<div class="alert alert-success" role="alert">
 
 				<p>
-					<a href="./listar-conteineres.jsp"> <%
+					<a href="./listar-movimentacao.jsp"> <%
  out.println("Container removido. Clique aqui para atualizar");
  %>
 				</p>

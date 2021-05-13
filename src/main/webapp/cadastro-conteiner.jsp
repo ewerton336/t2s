@@ -30,9 +30,15 @@
 	String categoria = request.getParameter("categoria");
 	%>
 
-	<div class="container-fluid">
+<div class="container-fluid mt-2">
 
-	
+	<%
+		if (session.getAttribute("session.username") == null) {
+		%>
+		<h1>Você não está autorizado a visualizar esta página!</h1>
+		<%
+		} else {
+		%>
 
 	
 			<%
@@ -45,10 +51,10 @@
 
 		<form method="post">
 			<h4>Cliente:</h4>
-			<input type="text" class="form-control" id="nom" name="cliente"
+			<input type="text" class="form-control" id="nom" name="cliente" placeholder= "Nome do cliente"
 				required> <br>
 			<h4>Número do contêiner:</h4>
-			<input type="text" class="form-control" id="email"
+			<input type="text" class="form-control" pattern="[a-zA-Z]{4}[0-9]{7}" placeholder="4 números 7 letras EX: ABCD1234567"email"
 				name="num_conteiner" required> <br>
 
 			<h4>Tipo de Contêiner:</h4>
@@ -186,7 +192,7 @@
 
 
 
-
+<%} %>
 
 
 

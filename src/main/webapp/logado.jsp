@@ -11,7 +11,7 @@
 <title>T2S - Início</title>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container-fluid mt-2">
 	
 	<% 
 if (session.getAttribute("session.username") != null) {

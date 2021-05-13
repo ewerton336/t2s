@@ -11,7 +11,7 @@
 <title>T2S - Sobre</title>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid mt-2">
   <h2>Sobre:</h2>
   <p>Abaixo é possível conferir a lista de atualizações do sistema. Também é possível acompanhar as alterações através dos commits do github. </p>            
   <table class="table table-striped">

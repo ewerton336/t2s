@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <%@include file="WEB-INF/jspf/bootstrap.jspf"%>
 <%@include file="WEB-INF/jspf/footer.jspf"%>
 <title>Teste banco de dados - T2s</title>
@@ -81,7 +82,7 @@
 				%>
 			
 			
-			<option value="<%=conteinerTable%>"><%=conteinerTable%></option>
+			<option value="<%=idTable%>"><%=conteinerTable%></option>
 	
 					
 					<%} %>
@@ -93,6 +94,8 @@
 		
 			
 			</select> <br>
+			
+		
 
 		
 			
@@ -179,7 +182,7 @@
 		/* SE O VALOR DE NOME TENHA ALGUMA INFORMAÇÃO, ELE IRÁ GRAVAR OS DADOS NO BD. CASO SEJA NULO, NÃO FARÁ NADA */
 
 		if (carga != null) {
-			String sql = "INSERT INTO tb_movimentacao (carga_descarga, gatein_gateout, posicionamento, pilha, peso, scanner, data_inicio, hora_inicio, data_fim, hora_fim, numero_conteiner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO tb_movimentacao (carga_descarga, gatein_gateout, posicionamento, pilha, peso, scanner, data_inicio, hora_inicio, data_fim, hora_fim, id_tbconteiner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement statement = connection.prepareStatement(sql);
 

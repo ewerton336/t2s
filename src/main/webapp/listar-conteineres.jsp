@@ -5,9 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@include file="WEB-INF/jspf/bootstrap.jspf"%>
 <%@include file="WEB-INF/jspf/footer.jspf"%>
+
 <title>Listagem de Contêineres - T2s</title>
 </head>
 <body>
@@ -43,7 +46,7 @@
 
 
 		<h1>Lista de Contêineres</h1>
-		<table class="table table-hover">
+		 	<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>id</th>
@@ -52,8 +55,7 @@
 					<th>Tipo</th>
 					<th>Status</th>
 					<th>Categoria</th>
-				</tr>
-
+				</tr> <tbody>
 				<%
 				Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 
@@ -73,7 +75,7 @@
 					String categoriaTable = result.getString("cat_conteiner");
 				%>
 			
-			<tbody>
+			
 				<tr>
 					<td><%=idTable%></td>
 					<td><%=nomeTable%></td>
@@ -95,7 +97,7 @@
 						</form></td>
 
 				</tr>
-			</tbody>
+			
 
 			<%
 				}
@@ -131,14 +133,20 @@
 
 			catch (SQLException e) {
 			out.println("Erro de conexao ao banco de dados PostgreSQL");
-			// TODO Auto-generated catch block
+
 			e.printStackTrace(new java.io.PrintWriter(out));
 			}
 
 			}
 			}
 			%>
+			</tbody>
 		</table>
 	</div>
+	
+
+	
+	
+	
 </body>
 </html>

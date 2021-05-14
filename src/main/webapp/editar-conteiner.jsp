@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <%@include file="WEB-INF/jspf/bootstrap.jspf"%>
 <%@include file="WEB-INF/jspf/footer.jspf"%>
 <title>Edição de Contêiner - T2s</title>
@@ -20,7 +21,8 @@
 	<%@include file="WEB-INF/jspf/session.jspf"%>
 	<%@include file="WEB-INF/jspf/jdbcURL.jspf"%>
 
-	<%String id = request.getParameter("idValue");
+	<%
+	String id = request.getParameter("idValue");
 	int id2 = 0;
 	if (id != null) {
 		id2 = (Integer.parseInt(request.getParameter("idValue")));
@@ -41,7 +43,7 @@
 
 		<%if (id!= null) { Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 
-		String sql = "Select id_conteiner, nm_cliente, num_conteiner, tip_conteiner, stt_conteiner, cat_conteiner  from tb_conteiner WHERE id_conteiner='" + id2 + "'";
+		String sql = "Select id_conteiner, nm_cliente, num_conteiner, tip_conteiner, stt_conteiner, cat_conteiner  from tb_conteiner WHERE id_conteiner='" + id + "'";
 
 				Statement statement = connection.createStatement();
 

@@ -64,15 +64,30 @@ if (session.getAttribute("session.username") == null) {
         <a class="nav-link" href="./index.jsp">Inicio</a>
       </li>
      
-      <li class="nav-item">
-        <a class="nav-link" href="./sobre.jsp">Sobre</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./cadastro-conteiner.jsp">Cadastrar Contêiner</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./listar-conteineres.jsp">Listar Contêineres</a>
-      </li>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Conteiner
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="./cadastro-conteiner.jsp">Cadastrar Contêiner</a>
+        <a class="dropdown-item" href="./listar-conteineres.jsp">Listar Contêineres</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+    
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Movimentação
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="./cadastro-movimentacao.jsp">Cadastrar Movimentação</a>
+        <a class="dropdown-item" href="./listar-movimentacao.jsp">Listar Movimentação</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+     
+     
+  
       <li class="nav-item">
         <a class="nav-link" href="./cadastro-movimentacao.jsp">Cadastrar Movimentação</a>
       </li>

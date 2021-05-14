@@ -167,6 +167,18 @@
 					</td>
 				</tr>
 				
+				
+					<tr>
+					<td>2.3</td>
+					<td>14/05/2021</td>
+					<td>Ajustes Finos</td>
+					<td>-Corrigido problemas de Layout em dispositivos móveis
+					<br>-Corrigido telas onde as tabelas estavam com letras minúsculas
+					<br>-Ajuste do IP de "localhost" para ip do servidor de banco de dados
+
+					</td>
+				</tr>
+				
 
 			</tbody>
 		</table>

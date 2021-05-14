@@ -37,6 +37,14 @@
 	String numeroConteiner = request.getParameter("vinculoIdInput");
 	
 	%>
+	
+	<%
+		if (session.getAttribute("session.username") == null) {
+		%>
+		<h1>Você não está autorizado a visualizar esta página!</h1>
+		<%
+		} else {
+		%>
 
 	
 
@@ -55,10 +63,10 @@
 	 <div class="row">
 	 <div class="col">
 	
-<form method="get">
+<form method="post">
 		<h4>Conteiner a vincular:</h4>
-			<select name="vinculoIdInput" class="custom-select">
-				<option selected>Selecione uma opção</option>
+			<select name="vinculoIdInput" class="custom-select" required>
+				<option disabled value="" selected hidden>Selecione uma opção</option>
 		
 			<%
 			try {
@@ -82,7 +90,7 @@
 				%>
 			
 			
-			<option value="<%=idTable%>"><%=conteinerTable%></option>
+			<option value="<%=idTable%>"><%=conteinerTable.toUpperCase()%></option>
 	
 					
 					<%} %>
@@ -102,16 +110,16 @@
 		
 		
 		<h4>Tipo de Operação:</h4>
-			<select name="cargaInput" class="custom-select">
-				<option selected>Selecione uma opção</option>
-				<option value="carga">Carga</option>
-				<option value="descarga">Descarga</option>
+			<select name="cargaInput" class="custom-select" required>
+				<option disabled value="" selected hidden>Selecione uma opção</option>
+				<option value="Carga">Carga</option>
+				<option value="Descarga">Descarga</option>
 			</select> <br>
 			
 			
 			<h4>Gate:</h4>
-			<select name="gateInput" class="custom-select">
-				<option selected>Selecione uma opção</option>
+			<select name="gateInput" class="custom-select" required>
+				<option disabled value="" selected hidden>Selecione uma opção</option>
 				<option value="Gate In">Gate In</option>
 				<option value="Gate Out">Gate Out</option>
 			</select> <br>
@@ -130,7 +138,7 @@
 			</div>
 		<div class="col">
 				
-				<h4>Peso:</h4>
+				<h4>Peso (em toneladas):</h4>
 			<input type="number" class="form-control" name="pesoInput"
 				required> 
 				
@@ -205,7 +213,7 @@
 		<div class="alert alert-success" role="alert">
 			<%
 			if (rows > 0) {
-				out.println("<h5>Dados salvos com Sucesso! </h5>");
+				out.println("<h5>Movimentação cadastrada com Sucesso! </h5>");
 			}
 			%>
 		</div>
@@ -217,7 +225,7 @@
 		out.println("<h2>Erro de conexao ao banco de dados PostgreSQL! Detalhes do erro:</h2> <br>");
 
 		e.printStackTrace(new java.io.PrintWriter(out));
-		}
+		} }
 		%>
 		<br> <br>
 		

@@ -5,16 +5,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<%@include file="WEB-INF/jspf/bootstrap.jspf"%>
-<%@include file="WEB-INF/jspf/footer.jspf"%>
-
+<%@include file="WEB-INF/jspf/jQery.jspf"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Listagem de Movimentação - T2s</title>
+
+<title>Listagem de movimentação - T2s</title>
+
+
+
+
+
+
 </head>
 <body>
-
-
+	<%@ page import="java.sql.Connection"%>
+	<%@ page import="java.sql.DriverManager"%>
+	<%@ page import="java.sql.SQLException"%>
 	<%@ page import="java.sql.Connection"%>
 	<%@ page import="java.sql.DriverManager"%>
 	<%@ page import="java.sql.SQLException"%>
@@ -23,53 +29,40 @@
 	<%@page import="java.sql.ResultSet"%>
 	<%@include file="WEB-INF/jspf/session.jspf"%>
 	<%@include file="WEB-INF/jspf/jdbcURL.jspf"%>
-
+	
+	
+	<%String botaoDel = request.getParameter("botaoDelete"); %>
+	
 	<div class="container-fluid mt-2">
-		<%
-		String cliente = request.getParameter("cliente");
-		String conteiner = request.getParameter("num_conteiner");
-		String tipo = request.getParameter("tipo");
-		String status = request.getParameter("status");
-		String categoria = request.getParameter("categoria");
-		String botaoDel = request.getParameter("botaoDelete");
-		int botaoDel2;
-		if (botaoDel != null) {
-			botaoDel2 = (Integer.parseInt(request.getParameter("botaoDelete")));
-		}
-		%>
-
-		<%
-		if (session.getAttribute("session.username") == null) {
-		%>
-		<h1>Você não está autorizado a visualizar esta página!</h1>
-		<%
-		} else {
-		%>
-
-
-
-		<h1>Lista de Contêineres</h1>
-	<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Id</th>
+	
+	<a href="javascript:close_window();">Fechar</a>
+	
+	<h1>Listagem de movimentação de contêineres</h1>
+	
+	<table id="tabela" class="table table-bordered table-hover text-center" style="width:100%">
+	  <thead>
+            <tr>
+               		<th>Cliente</th>
 					<th>Operação</th>
 					<th>Gate</th>
 					<th>Posicionamento</th>
 					<th>Pilha</th>
-					<th>Peso (em ton)</th>
+					<th>Peso (toneladas)</th>
 					<th>Scanner</th>
 					<th>Data Início</th>
 					<th>Hora Inicio</th>
 					<th>Data Fim</th>
 					<th>Hora fim</th>
 					<th>Conteiner</th>
-				</tr><tbody>
-
-				<%
+					
+					<th>Ações</th>
+					
+					   </thead>
+					
+					<%
 				Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 
-				String sql = "SELECT * FROM tb_movimentacao ORDER BY id_movimentacao ASC ";
+				String sql = "SELECT * FROM tb_movimentacao ORDER BY id_movimentacao ASC, carga_descarga ASC  ";
 
 				Statement statement = connection.createStatement();
 
@@ -81,20 +74,33 @@
 					String gate = result.getString("gatein_gateout");
 					String pos = result.getString("posicionamento");
 					String pilha = result.getString("pilha");
-					String peso = result.getString("gatein_gateout");
+					String peso = result.getString("peso");
 					String scanner = result.getString("scanner");
 					String dt_inicio = result.getString("data_inicio");
 					String hr_inicio = result.getString("hora_inicio");
 					String dt_fim = result.getString("data_fim");
 					String hr_fim = result.getString("hora_fim");
-					String numeroIdTbConteiner = result.getString("id_tbconteiner");
+					String idTbConteiner = result.getString("id_tbconteiner");
+					
+					
+					String sql4 = "SELECT nm_cliente, num_conteiner FROM tb_conteiner WHERE id_conteiner =" + idTbConteiner;
+
+					Statement statement4 = connection.createStatement();
+
+					ResultSet result4 = statement4.executeQuery(sql4);
+
+					while (result4.next()) {
+						String clienteDB = result4.getString("nm_cliente");
+						String nmConteinerVinculado = result4.getString("num_conteiner");
+					
 					
 					
 				%>
 			
 			
 				<tr>
-					<td><%=idTable%></td>
+					<td><%=clienteDB %></td>
+				
 					<td><%=carga%></td>
 					<td><%=gate%></td>
 					<td><%=pos%></td>
@@ -105,84 +111,98 @@
 					<td><%=hr_inicio%></td>
 					<td><%=dt_fim%></td>
 					<td><%=hr_fim%></td>
-					
-					<td><%
-					
-					String sql2 = "SELECT num_conteiner FROM tb_conteiner WHERE id_conteiner =" + numeroIdTbConteiner;
-
-					Statement statement2 = connection.createStatement();
-
-					ResultSet result2 = statement2.executeQuery(sql2);
-
-					while (result2.next()) {
-						String numConteiner = result2.getString("num_conteiner"); 
-					
-					%> <%=numConteiner %></td> <%} %>
+					<td><%=nmConteinerVinculado.toUpperCase()%></td>
 					
 					
 					
-				
 					
 					
 					
-
-					<td><form action="editar-movimentacao.jsp" method="get">
+					
+					
+					<td><form action="editar-movimentacao.jsp" method="post">
 							<button type="submit" value="<%=idTable%>" name="idValue"
-								class="btn btn-info">Editar</button>
-						</form></td>
-
-
-
-					<td><form method="post">
+								class="btn btn-info">Editar</button> </form>
+								
+								<form method="post">
 							<button type="submit" value="<%=idTable%>" name="botaoDelete"
-								class="btn btn-danger">Deletar</button>
-						</form></td>
-
-				</tr>
-			</tbody>
-
-			<%
-				}
+								class="mt-2 btn btn-danger">Deletar</button>
+						</form>				</td>
+					
+						<%
+				} }
 			connection.close();
 			%>
+					
+					
+            </tr>
+        
+        <tbody>
+         
+           <%
+
+if (botaoDel != null) {
+	try {
+
+		connection = DriverManager.getConnection(jdbcURL, username, password);
+
+		String sql3 = "DELETE FROM tb_movimentacao WHERE id_movimentacao = " + botaoDel + "";
+
+		PreparedStatement statement3 = connection.prepareStatement(sql3);
+
+		statement3.executeUpdate();
+%>
+<div class="alert alert-success" role="alert">
+
+	<p>
+		<a href="./listar-movimentacao.jsp"> <%
+out.println("Container removido. Clique aqui para atualizar");
+%>
+	</p>
+	</a>
+
+</div>
+<%
+connection.close();
+}
+	catch (SQLException e) {
+		out.println("Erro de conexao ao banco de dados PostgreSQL");
+		// TODO Auto-generated catch block
+		e.printStackTrace(new java.io.PrintWriter(out));
+		}
+
+		}
+		
+	
+	%>
+           
+           
+        </tbody>
+        
+       
+    </table>
+	
 
 
-			<%
-			if (botaoDel != null) {
-				try {
+	
 
-					connection = DriverManager.getConnection(jdbcURL, username, password);
 
-					String sql3 = "DELETE FROM tb_movimentacao WHERE id_movimentacao = " + botaoDel + "";
 
-					PreparedStatement statement3 = connection.prepareStatement(sql3);
+	
+	
+	
+	
 
-					statement3.executeUpdate();
-			%>
-			<div class="alert alert-success" role="alert">
-
-				<p>
-					<a href="./listar-movimentacao.jsp"> <%
- out.println("Container removido. Clique aqui para atualizar");
- %>
-				</p>
-				</a>
-
-			</div>
-			<%
-			connection.close();
-			}
-
-			catch (SQLException e) {
-			out.println("Erro de conexao ao banco de dados PostgreSQL");
-			// TODO Auto-generated catch block
-			e.printStackTrace(new java.io.PrintWriter(out));
-			}
-
-			}
-			}
-			%>
-		</table>
-	</div>
+	
+	
+</div>	
 </body>
+
+<script>
+function close_window() {
+	  
+	    close();
+	  
+	}
+</script>
 </html>

@@ -18,7 +18,9 @@
 if (session.getAttribute("session.username") != null) {
 %>
 
-<h1> Logado com sucesso!</h1>
+<h1> Logado com sucesso!</h1> <br>
+
+<h2> Selecione uma opção no menu acima.</h2>
 
 
 

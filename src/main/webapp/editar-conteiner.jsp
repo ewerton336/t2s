@@ -12,6 +12,13 @@
 <title>Edição de Contêiner - T2s</title>
 </head>
 <body>
+<%
+		if (session.getAttribute("session.username") == null) {
+		%>
+		<h1>Você não está autorizado a visualizar esta página!</h1>
+		<%
+		} else {
+		%> 
 	<%@ page import="java.sql.Connection"%>
 	<%@ page import="java.sql.DriverManager"%>
 	<%@ page import="java.sql.SQLException"%>
@@ -131,17 +138,18 @@ if (rows > 0) {
 	<div class="alert alert-success" role="alert">
 
 				<p>
-					<a href="./listar-conteineres.jsp"> <%
- out.println("Container atualizado. Clique aqui para voltar.");
+					<a href="javascript:close_window();"> <%
+ out.println("Alterações realizadas. Clique aqui para fechar.");
  %>
-				</p>
 				</a>
+				</p>
+				
 
 			</div>
 	<% 
 }
 
-connection.close(); }%> 
+connection.close(); } }%> 
 
 
 
@@ -158,4 +166,12 @@ connection.close(); }%>
 
 	</div>
 </body>
+
+<script>
+function close_window() {
+	  
+	    close();
+	  
+	}
+</script>
 </html>

@@ -31,7 +31,8 @@ String senhainput = request.getParameter("senha");
 
 <div class="row justify-content-center">
 	<aside class="col-sm-4">
-<p>Por favor, realize seu login</p>
+<p>Por favor, realize seu login</p> 
+<p>Caso queira apenas ter uma demonstração do sistema, utilize o email: admin@admin e senha: admin </p>
 <div class="card">
 <article class="card-body">
 <a href="cadastro-usuario.jsp" class="float-right btn btn-outline-primary">Criar conta</a>
@@ -95,7 +96,7 @@ String senhainput = request.getParameter("senha");
 			/*DEFINE O NOME DE USUARIO NA SESSAO E ATUALIZA A PAGINA*/
 			session.setAttribute("session.username", db_nome_usuario);
 			out.println("Logado com sucesso!");
-			 response.sendRedirect("./logado.jsp");
+			 response.sendRedirect("./index.jsp");
 			
 			}
 			 

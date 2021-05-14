@@ -50,34 +50,34 @@
 		
 
 
-
+		<h3> Cadastro de Contêiner</h3> <br>
 		<form method="post">
 			<h4>Cliente:</h4>
 			<input type="text" class="form-control" id="nom" name="cliente" placeholder= "Nome do cliente"
 				required> <br>
 			<h4>Número do contêiner:</h4>
-			<input type="text" class="form-control" pattern="[a-zA-Z]{4}[0-9]{7}" placeholder="4 números 7 letras EX: ABCD1234567"email"
+			<input type="text" class="form-control" pattern="[a-zA-Z]{4}[0-9]{7}" placeholder="4 letras e 7 números EX: ABCD1234567"
 				name="num_conteiner" required> <br>
 
 			<h4>Tipo de Contêiner:</h4>
-			<select name="tipo" class="custom-select">
-				<option selected>Selecione uma opção</option>
+			<select name="tipo" class="custom-select" required>
+				 <option disabled value="" selected hidden>Selecione uma opção</option>
 				<option value="20">20</option>
 				<option value="40">40</option>
 			</select> <br>
 
 			<h4>Status:</h4>
-			<select name="status" class="custom-select">
-				<option selected value = "0">Selecione uma opção</option>
-				<option value="cheio">Cheio</option>
-				<option value="vazio">Vazio</option>
+			<select name="status" class="custom-select" required>
+				<option disabled value="" selected hidden>Selecione uma opção</option>
+				<option value="Cheio">Cheio</option>
+				<option value="Vazio">Vazio</option>
 			</select>
 
 			<h4>Categoria:</h4>
-			<select name="categoria" class="custom-select">
-				<option selected value = "0">Selecione uma opção</option>
-				<option value="importacao">Importação</option>
-				<option value="exportacao">Exportacao</option>
+			<select name="categoria" class="custom-select" required>
+				<option disabled value="" selected hidden>Selecione uma opção</option>
+				<option value="Importacao">Importação</option>
+				<option value="Exportacao">Exportacao</option>
 			</select> <br> <br>
 
 
@@ -105,7 +105,7 @@
 		<div class="alert alert-success" role="alert">
 			<%
 			if (rows > 0) {
-				out.println("<h5>Dados salvos com Sucesso! </h5>");
+				out.println("<h5>Conteiner cadastrado com Sucesso! </h5>");
 			}
 			%>
 		</div>
@@ -165,8 +165,8 @@
 			<tbody>
 				<tr>
 					<td><%=idTable%></td>
-					<td><%=nomeTable%></td>
-					<td><%=conteinerTable%></td>
+					<td><%=nomeTable.toUpperCase()%></td>
+					<td><%=conteinerTable.toUpperCase()%></td>
 					<td><%=tipoTable%></td>
 					<td><%=statusTable%></td>
 					<td><%=categoriaTable%></td>

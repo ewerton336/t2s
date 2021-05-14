@@ -24,9 +24,6 @@ if (session.getAttribute("session.username") == null) {
       <li class="nav-item">
         <a class="nav-link" href="./index.jsp">Inicio</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./teste.jsp">Teste conexão com DB</a>
-      </li>
       
       <li class="nav-item">
         <a class="nav-link" href="./login.jsp">Login</a>
@@ -48,15 +45,15 @@ if (session.getAttribute("session.username") == null) {
 } else {
 %>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <!-- Brand -->
+
   <a class="navbar-brand" href="#">T2S</a>
 
-  <!-- Toggler/collapsibe Button -->
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <!-- Navbar links -->
+
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
     
@@ -70,8 +67,8 @@ if (session.getAttribute("session.username") == null) {
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="./cadastro-conteiner.jsp">Cadastrar Contêiner</a>
-        <a class="dropdown-item" href="./listar-conteineres.jsp">Listar Contêineres</a>
-        <a class="dropdown-item" href="#">Link 3</a>
+        <a onclick="window.open('./listar-conteineres.jsp','popup','width=1800,height=900'); return false;" class="dropdown-item" href="./relatorio-conteiner">Listar Contêineres</a>
+       
       </div>
     </li>
     
@@ -81,22 +78,35 @@ if (session.getAttribute("session.username") == null) {
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="./cadastro-movimentacao.jsp">Cadastrar Movimentação</a>
-        <a class="dropdown-item" href="./listar-movimentacao.jsp">Listar Movimentação</a>
-        <a class="dropdown-item" href="#">Link 3</a>
+        <a onclick="window.open('./listar-movimentacao.jsp','popup','width=1800,height=900'); return false;"  class="dropdown-item" href="./relatorio-movimentacao.jsp">Listar movimentação</a>
+   
       </div>
     </li>
-     
-     
-  
-      <li class="nav-item">
-        <a class="nav-link" href="./cadastro-movimentacao.jsp">Cadastrar Movimentação</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./listar-movimentacao.jsp">Listar Movimentação</a>
-      </li>
-      <li class="nav-item">
+    
+    
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Relatórios
+      </a>
+      <div class="dropdown-menu">
+        <a onclick="window.open('./relatorio-conteiner.jsp','popup','width=1800,height=900'); return false;" class="dropdown-item" href="./relatorio-conteiner">Relatório de Contêineres</a>
+        <a onclick="window.open('./relatorio-movimentacao.jsp','popup','width=1800,height=900'); return false;"  class="dropdown-item" href="./relatorio-movimentacao.jsp">Relatório de movimentação</a>
+      </div>
+    </li>
+    
+    
+   
+    
+     <li class="nav-item">
         <a class="nav-link" href="./sobre.jsp">Sobre</a>
       </li>
+     </ul>
+     
+     
+     
+     
+  <ul class="navbar-nav ml-auto">
+  
       <form>
    <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -104,15 +114,8 @@ if (session.getAttribute("session.username") == null) {
       </a>
        <form>
       <div class="dropdown-menu">
-        <a class="dropdown-item"> <input type="submit" class="btn btn-primary" name="session.logout" value="Sair" /></a>
+        <a class="dropdown-item"> <input type="submit" class="btn btn-outline-danger" name="session.logout" value="Sair" /></a>
       </li>
-       
-      
-       
-      
-   
-
-	
     </ul>
   </div>
   </nav>

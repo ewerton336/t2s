@@ -27,21 +27,22 @@ String senha = request.getParameter("senha");
 %>
 <body>
 
-<div class="alert alert-success" role="alert">
+
 	<% try {
 			Connection connection = DriverManager.getConnection(jdbcURL, username, password);
-			out.println("Conectado com sucesso ao banco de dados."); %>
-</div>
+			 %>
+<div class="container-fluid mt-2">
+
 
 
 <div class="row justify-content-center">
 	<aside class="col-sm-4">
-<p>Cadastro de usuário</p>
+
 <div class="card">
 <article class="card-body">
 <a href="login.jsp" class="float-right btn btn-outline-primary">Login</a>
 <h4 class="card-title mb-4 mt-1">Cadastro</h4>
-	 <form method="get">
+	 <form method="post">
 	 <div class="form-group">
     	<label>Nome completo:</label>
         <input name="nome" id="nome" class="form-control" placeholder="Nome" type="text">
@@ -114,7 +115,7 @@ int rows = statement.executeUpdate(); %>
 
 
 
-
+</aside> </div>
 
 </body>
 </html>

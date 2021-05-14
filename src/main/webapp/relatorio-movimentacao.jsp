@@ -8,7 +8,7 @@
 <%@include file="WEB-INF/jspf/jQery.jspf"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<%@include file="WEB-INF/jspf/footer.jspf"%>
+
 <title>Relatório de Movimentação - T2s</title>
 
 
@@ -35,6 +35,8 @@
 	
 	<div class="container-fluid mt-2">
 	
+	<a href="javascript:close_window();">Fechar</a>
+	
 	<h1>Relatório de movimentação de contêineres</h1>
 	
 	<table id="tabela" class="table table-bordered table-hover text-center" style="width:100%">
@@ -45,15 +47,15 @@
 					<th>Gate</th>
 					<th>Posicionamento</th>
 					<th>Pilha</th>
-					<th>Peso (em ton)</th>
+					<th>Peso (toneladas)</th>
 					<th>Scanner</th>
 					<th>Data Início</th>
 					<th>Hora Inicio</th>
 					<th>Data Fim</th>
 					<th>Hora fim</th>
 					<th>Conteiner</th>
-					<th>Id</th>
-					<th>Ações</th>
+					
+					
 					
 					   </thead>
 					
@@ -72,7 +74,7 @@
 					String gate = result.getString("gatein_gateout");
 					String pos = result.getString("posicionamento");
 					String pilha = result.getString("pilha");
-					String peso = result.getString("gatein_gateout");
+					String peso = result.getString("peso");
 					String scanner = result.getString("scanner");
 					String dt_inicio = result.getString("data_inicio");
 					String hr_inicio = result.getString("hora_inicio");
@@ -81,7 +83,7 @@
 					String idTbConteiner = result.getString("id_tbconteiner");
 					
 					
-					String sql4 = "SELECT nm_cliente FROM tb_conteiner WHERE id_conteiner =" + idTbConteiner;
+					String sql4 = "SELECT nm_cliente, num_conteiner FROM tb_conteiner WHERE id_conteiner =" + idTbConteiner;
 
 					Statement statement4 = connection.createStatement();
 
@@ -89,6 +91,7 @@
 
 					while (result4.next()) {
 						String clienteDB = result4.getString("nm_cliente");
+						String nmConteinerVinculado = result4.getString("num_conteiner");
 					
 					
 					
@@ -97,18 +100,18 @@
 			
 				<tr>
 					<td><%=clienteDB %></td>
-					<td><%=idTable%></td>
-					<td><%=carga%></td>
-					<td><%=gate%></td>
+				
+					<td><%=carga.toUpperCase()%></td>
+					<td><%=gate.toUpperCase()%></td>
 					<td><%=pos%></td>
 					<td><%=pilha%></td>
 					<td><%=peso%></td>
-					<td><%=scanner%></td>
+					<td><%=scanner.toUpperCase()%></td>
 					<td><%=dt_inicio%></td>
 					<td><%=hr_inicio%></td>
 					<td><%=dt_fim%></td>
 					<td><%=hr_fim%></td>
-					<td><%=idTbConteiner%></td>
+					<td><%=nmConteinerVinculado.toUpperCase()%></td>
 					
 					
 					
@@ -116,14 +119,8 @@
 					
 					
 					
-					<td><form action="editar-movimentacao.jsp" method="get">
-							<button type="submit" value="<%=idTable%>" name="idValue"
-								class="btn btn-info">Editar</button> </form>
-								
-								<form method="get">
-							<button type="submit" value="<%=idTable%>" name="botaoDelete"
-								class="mt-2 btn btn-danger">Deletar</button>
-						</form>				</td>
+					
+					
 					
 						<%
 				} }
@@ -135,6 +132,8 @@
         
         <tbody>
          
+       
+
            
            
         </tbody>
@@ -143,42 +142,6 @@
     </table>
 	
 
-<%
-
-if (botaoDel != null) {
-	try {
-
-		connection = DriverManager.getConnection(jdbcURL, username, password);
-
-		String sql3 = "DELETE FROM tb_movimentacao WHERE id_movimentacao = " + botaoDel + "";
-
-		PreparedStatement statement3 = connection.prepareStatement(sql3);
-
-		statement3.executeUpdate();
-%>
-<div class="alert alert-success" role="alert">
-
-	<p>
-		<a href="./relatorio-movimentacao.jsp"> <%
-out.println("Container removido. Clique aqui para atualizar");
-%>
-	</p>
-	</a>
-
-</div>
-<%
-connection.close();
-}
-	catch (SQLException e) {
-		out.println("Erro de conexao ao banco de dados PostgreSQL");
-		// TODO Auto-generated catch block
-		e.printStackTrace(new java.io.PrintWriter(out));
-		}
-
-		}
-		
-	
-	%>
 
 	
 
@@ -193,4 +156,12 @@ connection.close();
 	
 </div>	
 </body>
+
+<script>
+function close_window() {
+	  
+	    close();
+	  
+	}
+</script>
 </html>

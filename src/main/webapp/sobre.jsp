@@ -149,10 +149,20 @@
 				
 					<tr>
 					<td>2.1</td>
-					<td>12/05/2021</td>
+					<td>13/05/2021</td>
 					<td>Movimentação</td>
 					<td>-Criado botão para Deletar conteiner funcional. 
 					<br>-Adicionado página de cadastro e listagem de movimentação
+
+					</td>
+				</tr>
+				
+					<tr>
+					<td>2.2</td>
+					<td>13/05/2021</td>
+					<td>Relatório</td>
+					<td>-Criado menu com relatório de movimentações
+					<br>-Feito controle de paginação e lista ordenada por cliente e tipo de movimentação
 
 					</td>
 				</tr>

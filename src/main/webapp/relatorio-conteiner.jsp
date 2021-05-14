@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 
-<title>Listagem de contêineres - T2s</title>
+<title>Relatório de Contêineres - T2s</title>
 
 
 
@@ -37,7 +37,7 @@
 	
 	<a href="javascript:close_window();">Fechar</a>
 	
-	<h1>Listagem de contêineres</h1>
+	<h1>Relatório de contêineres cadastrados</h1>
 	
 	<table id="tabela" class="table table-bordered table-hover text-center" style="width:100%">
 	  <thead>
@@ -48,7 +48,7 @@
 					<th>Tipo</th>
 					<th>Status</th>
 					<th>Categoria</th>
-					<th>Ações</th>
+					
 					
 					   </thead>
 					
@@ -79,7 +79,7 @@
 					
 						<td><%=idTable%></td>
 						<td><%=clienteTable.toUpperCase()%></td>
-						<td><%=conteinerTable.toUpperCase()%></td>
+						<td><%=conteinerTable%></td>
 						<td><%=tipoTable.toUpperCase()%></td>
 						<td><%=statusTable.toUpperCase()%></td>
 						<td><%=categoriaTable.toUpperCase()%></td>
@@ -92,14 +92,7 @@
 						
 						
 						
-						<td><form action="editar-conteiner.jsp" method="post">
-								<button type="submit" value="<%=idTable%>" name="idValue"
-									class="btn btn-info">Editar</button> </form>
-									
-									<form method="post">
-								<button type="submit" value="<%=idTable%>" name="botaoDelete"
-									class="mt-2 btn btn-danger">Deletar</button>
-							</form>				</td>
+						
 						
 							<%
 					
@@ -114,63 +107,31 @@
         
         <tbody>
          
-           <%
-
-if (botaoDel != null) {
-	try {
-
-		connection = DriverManager.getConnection(jdbcURL, username, password);
-
-		String sql3 = "DELETE FROM tb_conteiner WHERE id_conteiner = " + botaoDel + "";
-
-		PreparedStatement statement3 = connection.prepareStatement(sql3);
-
-		statement3.executeUpdate();
-%>
-<div class="alert alert-success" role="alert">
-
-	<p>
-		<a href="./listar-conteineres.jsp"> <%
-out.println("Container removido. Clique aqui para atualizar");
-%>
-	</p>
-	</a>
-
-</div>
-<%
-connection.close();
-}
-	catch (SQLException e) {
-		out.println("Erro de conexao ao banco de dados PostgreSQL");
-		// TODO Auto-generated catch block
-		e.printStackTrace(new java.io.PrintWriter(out));
-		}
-
-		}
-		
-	
-	%>
            
+
+
+
+
            
         </tbody>
         
        
     </table>
 	
-
-
-	
-
-
+</div>
 
 	
-	
-	
-	
+
+
 
 	
 	
-</div>	
+	
+	
+
+	
+	
+	
 </body>
 
 <script>

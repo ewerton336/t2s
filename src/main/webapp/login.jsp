@@ -46,6 +46,7 @@ String senhainput = request.getParameter("senha");
     	<a class="float-right" href="#">Esqueceu a senha?</a>
     	<label>Senha:</label>
         <input class="form-control" placeholder="******" type="password" id="senha" name="senha">
+        <input type="checkbox" id="show-password" class="mt-4"><span class="mx-2">Exibir senha</span>
     </div> 
     <div class="form-group"> 
    
@@ -131,5 +132,18 @@ String senhainput = request.getParameter("senha");
 
 
 	</div>
+	<script>
+var x = document.getElementById("show-password");
+var y = document.getElementById("senha");
+x.onclick = function() {
+    if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
+  }
+}
+
+</script>
 </body>
+
 </html>

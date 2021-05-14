@@ -56,7 +56,7 @@
 			<input type="text" class="form-control" id="nom" name="cliente" placeholder= "Nome do cliente"
 				required> <br>
 			<h4>Número do contêiner:</h4>
-			<input type="text" class="form-control" pattern="[a-zA-Z]{4}[0-9]{7}" placeholder="4 letras e 7 números EX: ABCD1234567"
+			<input type="text" class="form-control" pattern="[a-zA-Z]{4}[0-9]{7}" placeholder="4 letras e 7 números EX: ABCD1234567" title="O formato deve ser 4 letras e 7 números. EX: ABCD1234567"
 				name="num_conteiner" required> <br>
 
 			<h4>Tipo de Contêiner:</h4>

@@ -112,12 +112,14 @@ if (session.getAttribute("session.username") == null) {
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         Bem vindo, <%=session.getAttribute("session.username")%>
       </a>
-       <form>
+       
       <div class="dropdown-menu">
-        <a class="dropdown-item"> <input type="submit" class="btn btn-outline-danger" name="session.logout" value="Sair" /></a>
-      </li>
+        <a class="dropdown-item"> <input type="submit" class="btn btn-outline-danger" name="session.logout" value="Sair" /></a> </div></li>
     </ul>
   </div>
+  </div>
+      </li>
+      </form>
   </nav>
 
 

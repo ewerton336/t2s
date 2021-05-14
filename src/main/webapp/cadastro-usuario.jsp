@@ -45,16 +45,17 @@ String senha = request.getParameter("senha");
 	 <form method="post">
 	 <div class="form-group">
     	<label>Nome completo:</label>
-        <input name="nome" id="nome" class="form-control" placeholder="Nome" type="text">
+        <input name="nome" id="nome" class="form-control" placeholder="Nome" type="text" required>
     </div> 
 	 
     <div class="form-group">
     	<label>Email:</label>
-        <input name="email" id="email" class="form-control" placeholder="Email" type="email">
+        <input name="email" id="email" class="form-control" placeholder="Email" type="email" required>
     </div> 
     <div class="form-group">
     	<label>Senha:</label>
-        <input class="form-control" placeholder="******" type="password" id="senha" name="senha">
+        <input class="form-control" placeholder="******" type="password" id="senha" name="senha" required>
+          <input type="checkbox" id="show-password" class="mt-4"><span class="mx-2">Exibir senha</span>
     </div> 
     <div class="form-group"> 
    
@@ -117,5 +118,20 @@ int rows = statement.executeUpdate(); %>
 
 </aside> </div>
 
+
+<script>
+var x = document.getElementById("show-password");
+var y = document.getElementById("senha");
+x.onclick = function() {
+    if (y.type === "password") {
+    y.type = "text";
+  } else {
+    y.type = "password";
+  }
+}
+</script>
 </body>
+
+
+
 </html>

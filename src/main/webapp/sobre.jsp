@@ -16,6 +16,8 @@
 		<p>Abaixo é possível conferir a lista de atualizações do sistema.
 			Também é possível acompanhar as alterações através dos commits do
 			github.</p>
+			
+			<p><a href="https://github.com/ewerton336/t2s">Clique aqui para acessar o github</a></p>
 		<table class="table table-striped">
 			<thead>
 				<tr>

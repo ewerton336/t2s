@@ -1,6 +1,6 @@
  <% 
-		 String jdbcURL = "jdbc:postgresql://localhost:5432/postgres"; 
-		 /*String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; */
+		/* String jdbcURL = "jdbc:postgresql://localhost:5432/postgres"; */
+		 String jdbcURL = "jdbc:postgresql://10.0.0.5:5432/postgres"; 
 		String username = "postgres";
 		String password = "123456"; %>
 			
